@@ -22,7 +22,7 @@ from policy.views import policy_view, homepage
 
 urlpatterns = [
     path('topic/', policy_view, name='topic'),
-    path('topic/<topic_slug>/', policy_view ),
+    path('topic/<pk>/', policy_view ),
 
     url(r'^tags/', include('taggit_templatetags2.urls')),
 

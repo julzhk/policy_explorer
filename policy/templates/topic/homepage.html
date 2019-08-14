@@ -1,0 +1,33 @@
+{% extends 'base/template_base.html' %}
+{% load taggit_templatetags2_tags static %}
+
+{% block 'extra-head' %}
+    <link href="{% static 'custom.css' %}" rel="stylesheet" type="text/css">
+
+{% endblock %}
+{% block 'body' %}
+    <div class="ui four column doubling stackable grid container">
+        <div class="one column row">
+            <div class="column">
+                <h1>Brevis, castus resistentias nunquam pugna de audax, rusticus bromium.</h1>
+            </div>
+        </div>
+        {% for person in people %}
+            <div class="column">
+                <h2 class="ui header">
+                    {{  policy.code }}
+                </h2>
+                {{  policy.text }}
+            <div class="divider"><hr/></div>
+                {% for tag in policy.tags.all %}
+                    <li>
+                        {{ tag }},
+                    </li>
+            {% endfor %}
+            </div>
+        {% endfor %}
+
+    </div>
+
+
+{% endblock %}
