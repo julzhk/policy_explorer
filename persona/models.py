@@ -17,7 +17,7 @@ logger = logging.getLogger(__name__)
 
 class Person(models.Model):
     name = models.CharField(max_length=512)
-    image = models.ImageField(upload_to=settings.CLOUDCUBE_URL, null=True, blank=True, width_field="width_field", height_field = "height_field")
+    image = models.ImageField(upload_to=settings.CLOUDCUBE_URL, null=True, blank=True)
     bio = models.TextField(blank=True, null=True)
 
     def __str__(self):
