@@ -1,13 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-{{ topic.slug }},
-{{ topic.name }},
-{{ topic.url }},
+{% extends 'base/template_base.html' %}
+{% load taggit_templatetags2_tags %}
 
-</body>
-</html>
+{% block 'body' %}
+    {% include "taggit_templatetags2/tagcanvas_include_js_static.html" %}
+
+    {% include_tagcanvas 'element_id' 500 500  %}
+
+    {% get_tagcloud as tags %}
+    --
+
+    <div class="ui four column doubling stackable grid container">
+        <div class="one column row">
+            <div class="column">
+                {{ topic.slug }},
+                {{ topic.name }},
+                {{ topic.url }},
+
+            </div>
+        </div>
+        {% for policy in topic.policy_set.all %}
+            <div class="column">
+                <h2 class="ui header">
+                    {{  policy.code }}
+                </h2>
+                {{  policy.text }}
+            <div class="divider"><hr/></div>
+                {% for tag in policy.tags.all %}
+                    <li>
+                        {{ tag }},
+                    </li>
+            {% endfor %}
+            </div>
+        {% endfor %}
+
+    </div>
+
+
+{% endblock %}

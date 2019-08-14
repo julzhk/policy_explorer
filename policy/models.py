@@ -1,6 +1,7 @@
 import logging
 from django.db import models
 from requests_html import HTMLSession
+from requests_html import HTMLSession
 
 import datetime
 from django.conf import settings
@@ -41,12 +42,25 @@ class Topic(models.Model):
             policy.text = data
             policy.save()
 
+    @classmethod
+    def populate_topic(cls):
+        session = HTMLSession()
+        session = session.get('https://policy.greenparty.org.uk/eu.html')
+        menu = session.html.find('.spchunk ul')[1]
+        items = menu.find('li')
+        for item in items:
+            label, href = item.text, item.find('a')[0].attrs.get('href')
+            topic, _ = Topic.objects.get_or_create(slug=label)
+            topic.name = label
+            topic.url = href
+            topic.save()
+
 
 class Policy(models.Model):
-    slug = models.SlugField(max_length=128)
-    name = models.CharField(max_length=512)
-    code = models.CharField(max_length=64)
-    topic = models.ForeignKey('Topic', on_delete=models.DO_NOTHING)
+    slug = models.SlugField(max_length=128, blank=True, null=True)
+    name = models.CharField(max_length=512, blank=True, null=True)
+    code = models.CharField(max_length=64, blank=True, null=True)
+    topic = models.ForeignKey('Topic', on_delete=models.DO_NOTHING, blank=True, null=True)
     text = models.TextField()
     tags = TaggableManager(blank=True)
     created = models.DateTimeField(blank=True, null=True)

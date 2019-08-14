@@ -34,6 +34,7 @@ TAGGIT_CASE_INSENSITIVE = True
 INSTALLED_APPS = [
     'policy',
     'taggit',
+    'taggit_templatetags2',
     'django_extensions',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -58,7 +59,9 @@ ROOT_URLCONF = 'policyExplorer.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'templates'),
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -117,8 +120,12 @@ USE_L10N = True
 
 USE_TZ = True
 
-
+APPEND_SLASH = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# Configure Django App for Heroku.
+import django_heroku
+django_heroku.settings(locals())

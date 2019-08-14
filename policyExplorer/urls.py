@@ -16,10 +16,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls import include, url
+from taggit_templatetags2 import urls as taggit_templatetags2_urls
 
 from policy.views import policy_view
 urlpatterns = [
-    url(r'^$', policy_view, name='policy_view'),
+    path('topic/', policy_view, name='topic'),
+    path('topic/<topic_slug>/', policy_view ),
+
+    url(r'^tags/', include('taggit_templatetags2.urls')),
 
     path('admin/', admin.site.urls),
 ]
