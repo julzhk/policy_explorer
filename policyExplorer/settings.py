@@ -34,6 +34,8 @@ TAGGIT_CASE_INSENSITIVE = True
 INSTALLED_APPS = [
     'policy',
     'taggit',
+    'persona',
+
     'taggit_templatetags2',
     'django_extensions',
     'django.contrib.admin',
@@ -42,6 +44,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'storages',
+
 ]
 
 MIDDLEWARE = [
@@ -107,24 +112,33 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 TEXTRAZOR_KEY = os.environ.get('TEXTRAZOR_KEY','none')
-# Internationalization
-# https://docs.djangoproject.com/en/2.0/topics/i18n/
+CLOUDCUBE_URL = os.environ.get('CLOUDCUBE_URL','none')
+CLOUDCUBE_ACCESS_KEY_ID = os.environ.get('CLOUDCUBE_ACCESS_KEY_ID','none')
+CLOUDCUBE_SECRET_ACCESS_KEY = os.environ.get('CLOUDCUBE_SECRET_ACCESS_KEY','none')
+
+AWS_ACCESS_KEY_ID = CLOUDCUBE_ACCESS_KEY_ID
+AWS_SECRET_ACCESS_KEY = CLOUDCUBE_SECRET_ACCESS_KEY
+AWS_STORAGE_BUCKET_NAME = 'sibtc-static'
+AWS_S3_CUSTOM_DOMAIN = CLOUDCUBE_URL
+AWS_S3_OBJECT_PARAMETERS = {
+    'CacheControl': 'max-age=86400',
+}
+
+AWS_LOCATION = 'static'
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static_src'),
+]
 
 LANGUAGE_CODE = 'en-us'
-
 TIME_ZONE = 'UTC'
-
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
-
 APPEND_SLASH = True
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/2.0/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = CLOUDCUBE_URL
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 # Configure Django App for Heroku.
 import django_heroku

@@ -3,6 +3,8 @@ attrs==19.1.0
 backcall==0.1.0
 beautifulsoup4==4.8.0
 bleach==3.1.0
+boto3==1.9.208
+botocore==1.12.208
 bs4==0.0.1
 certifi==2019.6.16
 chardet==3.0.4
@@ -14,8 +16,10 @@ Django==2.2.4
 django-classy-tags==0.9.0
 django-extensions==2.2.1
 django-heroku==0.3.1
+django-storages==1.7.1
 django-taggit==1.1.0
 django-taggit-templatetags2==1.6.1
+docutils==0.14
 entrypoints==0.3
 fake-useragent==0.1.11
 gunicorn==19.9.0
@@ -27,6 +31,7 @@ ipython-genutils==0.2.0
 ipywidgets==7.5.1
 jedi==0.15.0
 Jinja2==2.10.1
+jmespath==0.9.4
 jsonschema==3.0.2
 jupyter==1.0.0
 jupyter-client==5.3.1
@@ -43,6 +48,7 @@ parse==1.12.0
 parso==0.5.1
 pexpect==4.7.0
 pickleshare==0.7.5
+Pillow==6.1.0
 prometheus-client==0.7.1
 prompt-toolkit==2.0.9
 psycopg2==2.8.3
@@ -58,6 +64,7 @@ pyzmq==18.1.0
 qtconsole==4.5.2
 requests==2.22.0
 requests-html==0.10.0
+s3transfer==0.2.1
 Send2Trash==1.5.0
 six==1.12.0
 soupsieve==1.9.2
