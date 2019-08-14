@@ -106,7 +106,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
+TEXTRAZOR_KEY = os.environ.get('TEXTRAZOR_KEY','none')
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
 
