@@ -1,9 +1,10 @@
 from django.shortcuts import render
 from policy.models import Policy, Topic
-
+from persona.models import Person
 def homepage(request):
     return render(request, 'topic/homepage.html',
-                  {}
+                  {
+                      'persons':Person.objects.filter(published=True)}
                   )
 
 

@@ -22,5 +22,10 @@ class Person(models.Model):
     bio = models.TextField(blank=True, null=True)
     published = models.BooleanField(default=False)
     tags = TaggableManager(blank=True)
+
+    def get_absolute_url(self):
+        return reverse('person ' , args=(self.pk,))
+
+
     def __str__(self):
         return f'{self.name}'

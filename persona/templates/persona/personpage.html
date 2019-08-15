@@ -12,23 +12,20 @@
             <div class="one column row">
                 <div class="column">
                     <h1>
-{#                        The Green Party has policies on the thing you care about#}
-                        The reincarnation of your energies will die purely when you receive that purpose is the lotus.
+                {{  person.name }}
                     </h1>
                 </div>
             </div>
-        {% for person in persons %}
+
             <div class="column">
-            <h2 class="ui header">
-                <a href="{{ person.get_absolute_url }}">
-                {{  person.name }}
-                </a>
-            </h2>
             <p>
                 {{  person.bio }}
             </p>
         </div>
-        {% endfor %}
+    {% for policy in policies %}
+    {{ policy }}
+    {% endfor %}
+
     </div>
 
 

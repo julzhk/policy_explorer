@@ -19,10 +19,12 @@ from django.conf.urls import include, url
 from taggit_templatetags2 import urls as taggit_templatetags2_urls
 
 from policy.views import policy_view, homepage
+from persona.views import person_view
 
 urlpatterns = [
     path('topic/', policy_view, name='topic'),
     path('topic/<pk>/', policy_view ),
+    path('person/<pk>/', person_view , name='person'),
 
     url(r'^tags/', include('taggit_templatetags2.urls')),
 
