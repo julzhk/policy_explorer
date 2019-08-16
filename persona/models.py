@@ -22,6 +22,8 @@ class Person(models.Model):
     bio = models.TextField(blank=True, null=True)
     published = models.BooleanField(default=False)
     tags = TaggableManager(blank=True)
+    class Meta:
+        ordering = ('pk',)
 
     def get_absolute_url(self):
         return reverse('person' , args=(self.pk,))

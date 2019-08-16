@@ -1,0 +1,8 @@
+{% extends "base/template_menu.html" %}
+
+{% block 'body' %}
+		{% for taggeditem in taggeditem_list %}
+
+            {{ taggeditem.content_object }}
+		{% endfor %}
+{% endblock %}

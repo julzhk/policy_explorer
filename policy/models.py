@@ -22,6 +22,9 @@ class Topic(models.Model):
     modified = models.DateTimeField(blank=True, null=True)
     source = models.TextField(blank=True, null=True)
 
+    class Meta:
+        ordering = ('pk',)
+
     def __str__(self):
         return f'{self.name}'
 
@@ -66,10 +69,11 @@ class Policy(models.Model):
     created = models.DateTimeField(blank=True, null=True)
     modified = models.DateTimeField(blank=True, null=True)
     tags_reviewed = models.BooleanField(default=False)
+    class Meta:
+        ordering = ('code',)
+        verbose_name_plural = 'Policies'
 
     def __str__(self):
         return f'{self.code}:{self.name}'
 
-    class Meta:
-        verbose_name_plural = 'Policies'
 
