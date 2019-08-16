@@ -5,29 +5,38 @@
     <link href="{% static 'custom.css' %}" rel="stylesheet" type="text/css">
 {% endblock %}
 {% block 'body' %}
-    <div class="ui four column doubling stackable grid container">
-            <div class="four column row">
-                <div class="column">
-                    <h1>
-                        The Green Party has policies on the thing you care about
-                    </h1>
-                </div>
+
+    <div class="ui four column centered padded grid">
+        <div class="row">
+            <div class="column green">
+                <h1>
+                    The Green Party has policies on the issues you care about
+                </h1>
             </div>
-    <div class="two column row">
+        </div>
+    </div>
+
+
+    <div class="ui four column grid">
         {% for person in persons %}
             <div class="column">
-            <h2 class="ui header">
-                <a href="{{ person.get_absolute_url }}">
-                {{  person.name }}
-                </a>
-            </h2>
-            <p>
-                {{  person.bio }}
-            </p>
-        </div>
+                <div class="ui segment">
+                        <a href="{{ person.get_absolute_url }}">
+
+                    <img src="{{person.img_url}}">
+                        </a>
+                    <h2>
+                        <a href="{{ person.get_absolute_url }}">
+                          {{  person.name }}
+                        </a>
+                    </h2>
+                    <p>
+                        {{  person.bio }}
+                    </p>
+                </div>
+            </div>
         {% endfor %}
     </div>
-</div>
-
 
 {% endblock %}
+

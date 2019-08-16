@@ -13,4 +13,9 @@ def policy_view(request, pk=1):
     return render(request, 'topic/topic.html',
                   {'topic':topic}
                   )
+def topics_view(request):
+    topics = Topic.objects.all()
+    return render(request, 'topic/topics.html',
+                  {'topics':topics}
+                  )
 

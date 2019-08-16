@@ -6,34 +6,38 @@
 
 {% endblock %}
 {% block 'menu' %}
-<a href="{% url "home" %}" class="menu-icon">Home</a>
-
+    <div class="ui three item menu">
+        <a href="{% url "home" %}" class="item">Home</a>
+        <a href="{% url "topics" %}" class=" item">Policy Topics</a>
+        {#  <a class="item">Reviews</a>#}
+        {#  <a class="item">Upcoming Events</a>#}
+    </div>
 {% endblock %}
 
 {% block 'body' %}
     <div class="ui four column doubling stackable grid container">
-            <div class="one column row">
-                <div class="column">
-                    <h1>
-                        The Green Party has policies on the thing you care about
-                    </h1>
-                </div>
-            </div>
-    <div class="two column row">
-        {% for person in persons %}
+        <div class="one column row">
             <div class="column">
-            <h2 class="ui header">
-                <a href="{{ person.get_absolute_url }}">
-                {{  person.name }}
-                </a>
-            </h2>
-            <p>
-                {{  person.bio }}
-            </p>
+                <h1>
+                    The Green Party has policies on the thing you care about
+                </h1>
+            </div>
         </div>
-        {% endfor %}
+        <div class="two column row">
+            {% for person in persons %}
+                <div class="column">
+                    <h2 class="ui header">
+                        <a href="{{ person.get_absolute_url }}">
+                            {{  person.name }}
+                        </a>
+                    </h2>
+                    <p>
+                        {{  person.bio }}
+                    </p>
+                </div>
+            {% endfor %}
+        </div>
     </div>
-</div>
 
 
 {% endblock %}

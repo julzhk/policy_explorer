@@ -2,20 +2,13 @@
 {% load taggit_templatetags2_tags %}
 
 {% block 'body' %}
-    {% include "taggit_templatetags2/tagcanvas_include_js_static.html" %}
-
-    {% include_tagcanvas 'element_id' 500 500  %}
-
-    {% get_tagcloud as tags %}
-    --
-
     <div class="ui four column doubling stackable grid container">
-        <div class="one column row">
+{% for topic in topics %}
+        <div class="four column row">
             <div class="column">
-                {{ topic.slug }},
-                {{ topic.name }},
-                {{ topic.url }},
-
+                <h1>
+                    {{ topic.name }}
+                </h1>
             </div>
         </div>
         {% for policy in topic.policy_set.all %}
@@ -25,15 +18,14 @@
                 </h2>
                 {{  policy.text }}
             <div class="divider"><hr/></div>
-                {% for tag in policy.tags.all %}
+                {% for tag in policy.tags.all|slice:":25" %}
                     <li>
                         {{ tag }},
                     </li>
             {% endfor %}
             </div>
         {% endfor %}
-
+{% endfor %}
     </div>
-
 
 {% endblock %}

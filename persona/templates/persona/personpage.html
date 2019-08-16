@@ -6,13 +6,14 @@
 {% endblock %}
 
 {% block 'body' %}
+
     <div class="ui four column centered padded grid">
         <div class="row">
             <div class="column orange">
-                <img src="https://placeimg.com/200/200/faces">
                 <h1>
                     {{  person.name }}
                 </h1>
+                <img src="{{person.img_url}}">
                 <p>
                     {{  person.bio }}
                 </p>
@@ -22,7 +23,6 @@
 
     <div class="ui four column grid">
         {% for policy in policies %}
-
             <div class="column">
                 <div class="ui segment">
                     <h2>

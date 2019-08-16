@@ -27,5 +27,10 @@ class Person(models.Model):
         return reverse('person' , args=(self.pk,))
 
 
+    @property
+    def img_url(self):
+        gender = 'men' if self.pk % 2 else 'women'
+        return f'https://randomuser.me//api//portraits//{gender}//{self.pk}.jpg'
+
     def __str__(self):
         return f'{self.name}'
