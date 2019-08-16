@@ -29,6 +29,6 @@ urlpatterns = [
     url(r'^tags/', include('taggit_templatetags2.urls')),
 
     path('django-admin/', admin.site.urls),
-    path('', homepage),
+    path('', homepage, name='home'),
 
 ]

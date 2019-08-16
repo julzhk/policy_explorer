@@ -3,10 +3,16 @@
 
 {% block 'extra-head' %}
     <link href="{% static 'custom.css' %}" rel="stylesheet" type="text/css">
+
 {% endblock %}
+{% block 'menu' %}
+<a href="{% url "home" %}" class="menu-icon">Home</a>
+
+{% endblock %}
+
 {% block 'body' %}
     <div class="ui four column doubling stackable grid container">
-            <div class="four column row">
+            <div class="one column row">
                 <div class="column">
                     <h1>
                         The Green Party has policies on the thing you care about

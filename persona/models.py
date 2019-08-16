@@ -24,7 +24,7 @@ class Person(models.Model):
     tags = TaggableManager(blank=True)
 
     def get_absolute_url(self):
-        return reverse('person ' , args=(self.pk,))
+        return reverse('person' , args=(self.pk,))
 
 
     def __str__(self):
