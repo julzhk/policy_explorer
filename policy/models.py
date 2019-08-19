@@ -18,8 +18,6 @@ class Topic(models.Model):
     slug = models.SlugField(max_length=128)
     name = models.CharField(max_length=512)
     url = models.URLField(max_length=512)
-    created = models.DateTimeField(blank=True, null=True)
-    modified = models.DateTimeField(blank=True, null=True)
     source = models.TextField(blank=True, null=True)
 
     class Meta:
@@ -66,9 +64,6 @@ class Policy(models.Model):
     topic = models.ForeignKey('Topic', on_delete=models.DO_NOTHING, blank=True, null=True)
     text = models.TextField()
     tags = TaggableManager(blank=True)
-    created = models.DateTimeField(blank=True, null=True)
-    modified = models.DateTimeField(blank=True, null=True)
-    tags_reviewed = models.BooleanField(default=False)
     class Meta:
         ordering = ('code',)
         verbose_name_plural = 'Policies'

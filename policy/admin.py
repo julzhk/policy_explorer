@@ -10,8 +10,7 @@ class PolicyInline(admin.TabularInline):
 
 @admin.register(Topic)
 class TopicAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'url', 'created', 'modified')
-    list_filter = ('created', 'modified')
+    list_display = ('id', 'name', 'url',)
     search_fields = ('name',)
     inlines = [PolicyInline, ]
     prepopulated_fields = {'slug': ['name']}
@@ -19,9 +18,8 @@ class TopicAdmin(admin.ModelAdmin):
 
 @admin.register(Policy)
 class PolicyAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'code', 'topic',
-                    'tag_list', 'created', 'modified')
-    list_filter = ('topic', 'created', 'modified')
+    list_display = ('id', 'name', 'code', 'topic', 'tag_list', )
+    list_filter = ('topic', )
     raw_id_fields = ('tags',)
     search_fields = ('name','text')
     prepopulated_fields = {'slug': ['name']}
